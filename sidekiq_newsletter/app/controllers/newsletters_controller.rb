@@ -4,14 +4,14 @@ class NewslettersController < ApplicationController
   end
 
   def contact
-    h = JSON.generate({ 'name' => params[:name],
-                        'email' => params[:email]
-                        })
-
-    NewsletterWorker.perform_async(h, 5)
+    # h = JSON.generate(
+    #   { 'name' => params[:name],
+    #     'email' => params[:email]
+    #   })
+    # NewsletterWorker.perform_async(h, 5)
 
     # if instead of sidekiq I was just sending email from rails
-    # VisitorMailer.contact_email(@name, @email, @message).deliver
+    NewsletterMailer.contact_email(@name, @email).deliver
 
     redirect_to :root
   end
@@ -26,6 +26,4 @@ class NewsletterWorker < NewslettersController
     NewsletterMailer.contact_email(h['name'], h['email']).deliver
   end
 
-  
-  
 end
