@@ -1,12 +1,11 @@
 class NewsletterMailer < ApplicationMailer
 
-  def contact_email(name, email, message)
+  def contact_email(name, email)
     @name = name
     @email = email
-    @message = message
   end
 
-  default from: "midways.midpointApp@gmail.com"
+  default from: "sidekiq.test.ga@gmail.com"
 
 # Below is the email they recieve when they get an email from a friend
 # with the midpoint location (resturant/bar) they are meeting
