@@ -1,8 +1,8 @@
-class NewsletterWorker < NewslettersController
+class NewslettersWorker < RecipientsController
   include Sidekiq::Worker
 
-  def perform(h, count)
-    h = JSON.load(h)
-    NewsletterMailer.contact_email(h['name'], h['email']).deliver
+  def perform(recipient_id)
+    RecipientMailer.newsletter(Recipient.find(recipient_id))
   end
+
 end
