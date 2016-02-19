@@ -28,6 +28,7 @@ class RecipientsController < ApplicationController
 
     respond_to do |format|
       if @recipient.save
+        NewsletterMailer.newsletter(@recipient).deliver
         format.html { redirect_to @recipient, notice: 'Recipient was successfully created.' }
         format.json { render :show, status: :created, location: @recipient }
       else
