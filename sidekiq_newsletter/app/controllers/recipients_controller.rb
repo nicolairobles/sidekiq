@@ -28,7 +28,7 @@ class RecipientsController < ApplicationController
 
     respond_to do |format|
       if @recipient.save
-        NewsletterWorker.perform_in(5.minutes, @recipient.id)
+        NewslettersWorker.perform_in(1.minute, @recipient.id)
         format.html { redirect_to @recipient, notice: 'Recipient was successfully created.' }
         format.json { render :show, status: :created, location: @recipient }
       else
@@ -74,11 +74,11 @@ class RecipientsController < ApplicationController
     end
 end
 
-class NewslettersWorker < RecipientsController
-  include Sidekiq::Worker
+# class NewslettersWorker < RecipientsController
+#   include Sidekiq::Worker
 
-  def perform(recipient_id)
-    RecipientMailer.newsletter(Recipient.find(recipient_id))
-  end
+#   def perform(recipient_id)
+#     RecipientMailer.newsletter(Recipient.find(recipient_id))
+#   end
 
-end
+# end
