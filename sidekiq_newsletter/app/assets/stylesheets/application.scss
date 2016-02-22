@@ -1,0 +1,56 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@import "bootstrap";
+
+/* jumbotron image */
+html{
+	margin: -10px;
+}
+
+.banner{
+    background-image:  url(banner.jpg);
+    height: 100px;
+    width: 550px;
+    background-size: cover; 
+}
+
+.jumbotron{
+    background:  url(fireworks.gif);
+    background-size: cover; 
+    color: white;
+    margin: -10px;
+    height: 500px;
+    .container {
+      margin-left: 46px;
+    }
+    .new_form{
+      margin-left: 50px;
+	  margin-top: 20px;
+	  padding-top: 7px;    
+    }
+    h1{
+        text-align: left;
+        font-size: 45px;
+        font-family: "Open Sans",Arial,Helvetica,sans-serif;
+        font-weight: 800;
+        text-shadow: 2px 2px 10px #1F242D;
+    }
+    p{
+        font-family: "Open Sans",Arial,Helvetica,sans-serif;
+        text-shadow: 2px 2px 10px #1F242D;
+    }
+}

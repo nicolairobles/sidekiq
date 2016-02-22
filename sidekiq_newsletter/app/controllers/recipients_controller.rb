@@ -28,8 +28,8 @@ class RecipientsController < ApplicationController
 
     respond_to do |format|
       if @recipient.save
-        RecipientMailer.newsletter(@recipient).deliver_now
-        # RecipientMailer.delay_for(2.minutes).newsletter(@recipient)
+        # RecipientMailer.newsletter(@recipient).deliver_now
+        RecipientMailer.delay_for(2.minutes).newsletter(@recipient)
         format.html { redirect_to @recipient, notice: 'Recipient was successfully created.' }
         format.json { render :show, status: :created, location: @recipient }
       else
