@@ -1,28 +1,56 @@
-== README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+##Steps to Set Up Action Mailer With Gmail
 
-Things you may want to cover:
+Set up action mailer by running
 
-* Ruby version
+```rails g mailer ExampleMailer```
 
-* System dependencies
+For the purposes of our project we set up Action Mailer through Gmail. 
 
-* Configuration
+###In Development
 
-* Database creation
+As a note when testing make sure to configure to not only in development 
+in config/environments/production
 
-* Database initialization
+```  config.action_mailer.smtp_settings = {
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :user_name            => ENV[‘YOUR API CODE HERE FOR USERNAME],
+    :password             => ENV['YOUR API CODE HERE FOR PASSWORD],
+    :authentication       => "plain",
+    :enable_starttls_auto => true
+  } ```
 
-* How to run the test suite
+###Configure Action Mailer in Your Rails App
+In Mailer/application make sure to configure the mailer 
 
-* Services (job queues, cache servers, search engines, etc.)
+```class ApplicationMailer < ActionMailer::Base
+  default from: “THE EMAIL YOU ARE SENDING FROM"
+  layout 'mailer'
+end```
 
-* Deployment instructions
+and in the mailer you generated with the name you created and that same folder. Ours is called Recipient_Mailer
 
-* ...
+```class RecipientMailer < ApplicationMailer
+  default from: "example@gmail.com" ```
+ 
+ ``` def newsletter(recipient)
+    @recipients = recipient["email"]
+    mail(to: @recipients, subject: "testing our emails")
+  end
+end```
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Recipients in this case correlates to the emails in our database. The code above sets recipients to the emails in our database to send.
+
+###Setup Your API Keys
+Then once this has been configured set your API keys in your bash profile 
+
+Then if you go into views/layouts/recipient_mailer/newsletter you can set up what you want the email to say and the format and you are set to test your action mailer.
+
+###Test it! 
+If for some reason you are getting an error make sure to check that you dont have more than one server running by writting
+
+``` rogue ```
+
+in the terminal and killing the other servers if there are any others running
