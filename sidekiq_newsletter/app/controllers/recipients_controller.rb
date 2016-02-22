@@ -30,7 +30,7 @@ class RecipientsController < ApplicationController
       if @recipient.save
         # RecipientMailer.newsletter(@recipient).deliver_now
         RecipientMailer.delay_for(2.minutes).newsletter(@recipient)
-        format.html { redirect_to @recipient, notice: 'Recipient was successfully created.' }
+        format.html { redirect_to @recipient, notice: 'Freedom awaits you.' }
         format.json { render :show, status: :created, location: @recipient }
       else
         format.html { render :new }

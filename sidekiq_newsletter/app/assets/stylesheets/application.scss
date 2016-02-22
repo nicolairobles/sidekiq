@@ -18,13 +18,13 @@
 
 /* jumbotron image */
 html{
-	margin: -10px;
+	// margin: -10px;
 }
 
 .banner{
     background-image:  url(banner.jpg);
-    height: 100px;
-    width: 550px;
+    height: 102px;
+    width: 100%;
     background-size: cover; 
 }
 
@@ -34,13 +34,13 @@ html{
     color: white;
     margin: -10px;
     height: 500px;
-    .container {
-      margin-left: 46px;
-    }
+    // .container {
+    //   margin: 0 auto;
+    // }
     .new_form{
-      margin-left: 50px;
-	  margin-top: 20px;
-	  padding-top: 7px;    
+   //    margin-left: 50px;
+	  // margin-top: 20px;
+	  // padding-top: 7px;    
     }
     h1{
         text-align: left;
