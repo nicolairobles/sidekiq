@@ -1,3 +1,4 @@
+
 class RecipientMailer < ApplicationMailer
   default from: "sidekiq.test.ga@gmail.com"
  

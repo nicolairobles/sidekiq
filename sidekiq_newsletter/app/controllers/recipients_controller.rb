@@ -28,7 +28,8 @@ class RecipientsController < ApplicationController
 
     respond_to do |format|
       if @recipient.save
-        RecipientMailer.newsletter(@recipient).deliver_now
+        #RecipientMailer.newsletter(@recipient).deliver_now
+        NewslettersWorker.perform(@recipient)
         format.html { redirect_to @recipient, notice: 'Recipient was successfully created.' }
         format.json { render :show, status: :created, location: @recipient }
       else
@@ -73,3 +74,5 @@ class RecipientsController < ApplicationController
       params.require(:recipient).permit(:name, :email)
     end
 end
+
+
