@@ -3,6 +3,7 @@ class RecipientMailer < ApplicationMailer
  
   def newsletter(recipient)
     @recipients = recipient["email"]
-    mail(to: @recipients, subject: "testing our emails")
+    mail(to: @recipients, subject: "
+AMERICAN FREEDOM NEWS UPDATE")
   end
 end
