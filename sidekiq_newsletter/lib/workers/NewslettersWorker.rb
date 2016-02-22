@@ -1,4 +1,4 @@
-class NewslettersWorker 
+class NewslettersWorker < RecipientsController
   include Sidekiq::Worker
 
   def perform(recip)

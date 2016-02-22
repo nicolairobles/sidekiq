@@ -1,16 +1,3 @@
-require 'sidekiq'
-class NewslettersWorker 
-  include Sidekiq::Worker
-
-  def perform(recip)
-    RecipientMailer.newsletter(recip).deliver_now
-  end
-
-  def cheese
-    puts "CHEESE"
-  end
-end
-
 class RecipientsController < ApplicationController
   before_action :set_recipient, only: [:show, :edit, :update, :destroy]
 
