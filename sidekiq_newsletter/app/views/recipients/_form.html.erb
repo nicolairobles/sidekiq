@@ -11,15 +11,11 @@
     </div>
   <% end %>
 
+
+<!-- american freedom news of america -->
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+    <%= f.text_field :name, placeholder: 'Name' %>
+    <%= f.text_field :email, placeholder: 'Email'  %>
+    <%= f.submit "Solicit Freedom"  %>
   </div>
 <% end %>

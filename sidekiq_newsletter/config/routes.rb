@@ -1,12 +1,12 @@
-# require 'sidekiq/web'
+ require 'sidekiq/web'
 
 Rails.application.routes.draw do
 
   resources :recipients
-  # mount Sidekiq::Web => '/sidekiq'
+   mount Sidekiq::Web => '/sidekiq'
 
   # post 'newsletters/contact', to: 'newsletters#contact'
-  # root 'newsletters#index'
+  root 'recipients#new'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
