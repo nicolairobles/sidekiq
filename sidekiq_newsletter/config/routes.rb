@@ -1,9 +1,9 @@
-# require 'sidekiq/web'
+ require 'sidekiq/web'
 
 Rails.application.routes.draw do
 
   resources :recipients
-  # mount Sidekiq::Web => '/sidekiq'
+   mount Sidekiq::Web => '/sidekiq'
 
   # post 'newsletters/contact', to: 'newsletters#contact'
   # root 'newsletters#index'

@@ -1,3 +1,16 @@
+require 'sidekiq'
+class NewslettersWorker 
+  include Sidekiq::Worker
+
+  def perform(recip)
+    RecipientMailer.newsletter(recip).deliver_now
+  end
+
+  def cheese
+    puts "CHEESE"
+  end
+end
+
 class RecipientsController < ApplicationController
   before_action :set_recipient, only: [:show, :edit, :update, :destroy]
 
@@ -28,7 +41,8 @@ class RecipientsController < ApplicationController
 
     respond_to do |format|
       if @recipient.save
-        RecipientMailer.newsletter(@recipient).deliver_now
+        #RecipientMailer.newsletter(@recipient).deliver_now
+        NewslettersWorker.perform(@recipient)
         format.html { redirect_to @recipient, notice: 'Recipient was successfully created.' }
         format.json { render :show, status: :created, location: @recipient }
       else
@@ -73,3 +87,5 @@ class RecipientsController < ApplicationController
       params.require(:recipient).permit(:name, :email)
     end
 end
+
+
